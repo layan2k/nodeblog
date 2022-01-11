@@ -8,6 +8,7 @@ Express is a fast, unopinionated, minimalist web framework for node.
 - Use the package manager [npm](https://www.npmjs.com/package/npm) to install the file dependencies.
 
 ```bash
+#In your terminal run
 npm install
 ```
 
@@ -15,7 +16,7 @@ npm install
 
 ```shell
 
-# To open Express Server on Local Host
+#To open the Express Server on Local Host , In your Terminal Run
 npm start
 
 ```
