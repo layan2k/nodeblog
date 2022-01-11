@@ -1,10 +1,11 @@
 # Node Express Blog
 
-Foobar is a Python library for dealing with word pluralization.
+Express is a fast, unopinionated, minimalist web framework for node.
 
 ## Installation
-
-Use the package manager [npm](https://www.npmjs.com/package/npm) to install the file dependencies.
+- Clone Repository
+- Navigate into Nodeblog and open with your preferred IDE.
+- Use the package manager [npm](https://www.npmjs.com/package/npm) to install the file dependencies.
 
 ```bash
 npm install
@@ -25,5 +26,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## Book
 Beginning Node.js Express MongoDB Development by [Greg_Lim](https://greglim.co/)
 
-## Bootstrap Templates By
+## Bootstrap Template By
 [Start_BootStrap](https://startbootstrap.com/theme/clean-blog)
