@@ -1,0 +1,10 @@
+{
+  "name": "nodeblog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "LDS",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
