@@ -6,54 +6,45 @@ const port = 4000;
 const mongoose = require('mongoose');
 require("dotenv/config");
 const bodyParser = require('body-parser');
-
+// Controller Imports
+const newPostController = require('./controllers/newPost')
+const aboutPage = require('./controllers/aboutPage')
+const contactPage = require('./controllers/contactPage')
+const homePage = require('./controllers/home')
+const getPost = require('./controllers/getPost')
+const storePost = require('./controllers/storePost')
 
 // models
-const BlogPost = require('./models/BlogPost')
+const BlogPost = require('./models/BlogPost');
+const fileUpload = require('express-fileupload');
 
 dbkey = process.env.DB_KEY
 
 // mongodb connection
 mongoose.connect('mongodb://127.0.0.1:27017/project1').then(()=>{console.log("db connected")}).catch((err)=>{console.log(err)})
 
-// Express Settings
+// Middleware
+// const customMiddleWare = (req,res,next)=>{
+//     console.log('customMiddleWare called')
+//     next()
+//}
+const validateMiddleWare = require('./middleware/validateMiddleware')
+
 app.use(express.static(__dirname + '/public'))
 app.set('view engine','ejs');
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
+app.use(fileUpload())
+// app.use(customMiddleWare)
+app.use('/posts/store',validateMiddleWare)
 
 // routes
-app.get('/',async (req,res)=>{
-    const blogposts = await BlogPost.find({})
-    res.render('index',{blogposts})
-})
-app.get('/about', (req,res)=>{
-    res.render('about')
-})
-app.get('/contact',(req,res)=>{
-    res.render('contact')
-})
-
-app.get('/post/new', (req,res)=>{
-    res.render('create')
-})
-
-app.get('/post/:id',async(req,res)=>{
-    const blogpost = await BlogPost.findById(req.params.id)
-    res.render('post', {blogpost})
-})
-
-app.post('/posts/store',(req,res)=>{
-    let image = req.files.image
-    image.mv(path.resolve(__dirname,'public/assets/img',image.name),async(error)=>{
-        await BlogPost.create({
-            ...req.body,
-            image: '/img/' + image.name
-        })
-        res.redirect('/')
-    })
-
-} )
+app.get('/',homePage)
+app.get('/about',aboutPage)
+app.get('/contact',contactPage)
+app.get('/post/new',newPostController)
+app.get('/post/:id',getPost)
+app.post('/posts/store',storePost )
 
 app.listen(port,()=>{
     console.log(`Listening on port ${port}`)
