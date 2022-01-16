@@ -13,6 +13,10 @@ const contactPage = require('./controllers/contactPage')
 const homePage = require('./controllers/home')
 const getPost = require('./controllers/getPost')
 const storePost = require('./controllers/storePost')
+const newUser = require('./controllers/newUser')
+const storeUser = require('./controllers/storeUser')
+const loginUser = require('./controllers/loginUser')
+const loginUserController = require('./controllers/loginController')
 
 // models
 const BlogPost = require('./models/BlogPost');
@@ -45,6 +49,10 @@ app.get('/contact',contactPage)
 app.get('/post/new',newPostController)
 app.get('/post/:id',getPost)
 app.post('/posts/store',storePost )
+app.get('/auth/register',newUser)
+app.post('/users/register',storeUser)
+app.get('/auth/login', loginUser)
+app.post('users/login',loginUserController)
 
 app.listen(port,()=>{
     console.log(`Listening on port ${port}`)
