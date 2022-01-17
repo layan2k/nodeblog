@@ -11,10 +11,16 @@ Express is a fast, unopinionated, minimalist web framework for node.
 #In your terminal run
 npm install
 ```
+## Setup MongoDB Connection
+```bash
+#Run the following
+touch .env
+echo "DB_KEY= <Your Key>" > .env
+```
 
 ## Usage
 
-```shell
+```bash
 
 #To open the Express Server on Local Host , In your Terminal Run
 npm start
