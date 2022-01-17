@@ -20,6 +20,13 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+                        <% if(errors !=null && errors.length > 0){ %>
+                            <ul class="list-group">
+                                <% for(let i =0; i<errors.length; i++){ %>
+                                    <li class="list-group-item-danger"><%= errors[i] %> </li>
+                                    <% } %>
+                            </ul>
+                            <% } %>
                         <div class="my-5">
                             <!-- * * * * * * * * * * * * * * *-->
                             <!-- * * SB Forms Contact Form * *-->
@@ -30,11 +37,11 @@
                             <!-- to get an API token!-->
                             <form id="contactForm" action="/users/login" method="post" enctype="multipart/form-data">
                                 <div class="form-floating">
-                                    <input class="form-control" id="username" type="text" placeholder="User Name" name="username" />
+                                    <input class="form-control" id="username" type="text" placeholder="User Name" name="username" value="<%= username %> "/>
                                     <label for="username">User Name</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input class="form-control" id="password" type="text" placeholder="Password" name="password" />
+                                    <input class="form-control" id="password" type="text" placeholder="Password" name="password" value="<%= password %> " />
                                     <label for="password">Password</label>
                                 </div>
                                 <br />

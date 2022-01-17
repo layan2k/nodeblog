@@ -8,12 +8,19 @@ module.exports = (req, res)=>{
         if(user){
             bcrypt.compare(password,user.password,(error,same)=>{
                 if(same){
+                    req.session.userId = user._id
                     res.redirect('/')
                 }
                 else{
                     res.redirect('/auth/login')
                 }
             })
+        }
+        else if(error){
+            const validationErrors =Object.keys(error.errors).map(key=>error.errors[key].message)
+            req.flash('validationErrors',validationErrors)
+            req.flash('data',req.body)
+            return res.redirect('/auth/login');
         }
         else{
             res.redirect('/auth/login')
