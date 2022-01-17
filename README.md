@@ -15,7 +15,7 @@ npm install
 ```bash
 #Run the following
 touch .env
-echo "DB_KEY= <Your Key>" > .env
+echo "DB_KEY=<Your Key>" > .env
 ```
 
 ## Usage
